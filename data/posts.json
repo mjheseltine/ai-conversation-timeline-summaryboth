@@ -1,0 +1,117 @@
+[
+  {
+    "id": "post1",
+    "author": "NewsWire",
+    "handle": "@newswire",
+    "text": "President Donald Trump signed a government funding bill, ending a record 43-day shutdown — the longest in nation's history — hours after the House passed the measure on a mostly party-line vote of 222-209.",
+    "likes": 128,
+    "retweets": 34,
+    "timestamp": "4h",
+    "image": "images/post1_thumb.jpg",
+    "aiSummary": "Post highlights Trump ending the record shutdown after weeks of standoff, prompting critics to argue the eventual deal was available from the start.",
+    "replies": [
+      {
+        "author": "CivicsNerd",
+        "handle": "@civicsnerd",
+        "text": "Hold the phone! After a mere 43 days—the shortest 43 days in history, clearly—the government is back open! I'm just so relieved that the art of the deal involves shutting down the entire country, breaking a record, and then signing the exact bill you could have signed 43 days ago."
+      },
+      {
+        "author": "HistoryBuff",
+        "handle": "@hbuff",
+        "text": "DonCon should market a new \"43 & 35\" cap to commemorate the 2 longest government shutdowns occurring during his presidencies. The man who would be shutdown king."
+      },
+      {
+        "author": "PatriotTex",
+        "handle": "@patriot_tex",
+        "text": "Finally, the Schumer shutdown is over."
+      }
+    ]
+  },
+
+  {
+    "id": "post2",
+    "author": "PoliticsDaily",
+    "handle": "@pol_daily",
+    "text": "Emails from Jeffrey Epstein released by Democrats say President Trump \"knew about the girls\" and spent time with a victim.",
+    "likes": 92,
+    "retweets": 18,
+    "timestamp": "2h",
+    "image": "images/post2_thumb.jpg",
+    "aiSummary": "Post reports on Epstein emails implicating Trump, with reactions split between dismissing the claims as partisan attacks and insisting Republicans fear political fallout.",
+    "replies": [
+      {
+        "author": "TruthGuard",
+        "handle": "@truthguard",
+        "text": "Another lie coming from the Democrats to try and smear Trump."
+      },
+      {
+        "author": "Justice4All",
+        "handle": "@justice_watch",
+        "text": "Trump, Bondi, Patel, Johnson, all GOP know that Trump can’t survive the Epstein files… they can’t afford that and will do all they can to hide, deflect and lie to the country as a whole… Epstein’s original sweetheart deal was the biggest coverup that ever worked… still going…"
+      },
+      {
+        "author": "Watcher",
+        "handle": "@watcher",
+        "text": "Oh boy."
+      }
+    ]
+  },
+
+  {
+    "id": "post3",
+    "author": "wowsomuchpolitics",
+    "handle": "@pol_wow",
+    "text": "This bodes ill. Readers used to outnumber non-readers two to one. Now non-readers outnumber readers three to one. It's hard to imagine a change of that magnitude not having significant effects.",
+    "likes": 98,
+    "retweets": 17,
+    "timestamp": "3h",
+    "image": "images/post4_thumb.jpg",
+    "aiSummary": "Post discusses the lack of reported reading in leisure time among young adults. Important context, however, is that many are still reading shorter formats but not reporting this as lesiure reading.",
+    "replies": [
+      {
+        "author": "ant hooper",
+        "handle": "@hooper",
+        "text": "Just as important... Look at the slope of that line. The ratio is changing fast."
+      },
+      {
+        "author": "andreas",
+        "handle": "@andre_as",
+        "text": "Reading and writing had a good run. Five hundred years or so from the invention of the printing press to the invention of the iPhone. It’s over now. No real need to read anymore"
+      },
+      {
+        "author": "jimboot",
+        "handle": "@jimboot",
+        "text": "It's moved from eyes to ears. Learning is still happening but via different head holes."
+      }
+    ]
+  },
+
+  {
+    "id": "post4",
+    "author": "USPolitics",
+    "handle": "@uspolitics",
+    "text": "John F. Kennedy’s grandson Jack Schlossberg is making a run for the U.S. House next year.",
+    "likes": 201,
+    "retweets": 51,
+    "timestamp": "1d",
+    "image": "images/post3_thumb.jpg",
+    "aiSummary": "Post notes JFK’s grandson entering a House race, prompting mixed reactions about the Kennedy legacy and his chances in a crowded Manhattan district.",
+    "replies": [
+      {
+        "author": "RFKStan",
+        "handle": "@rfkfan",
+        "text": "A Kennedy? That blackens the Kennedy name. RFK is doing a great job, IMHO."
+      },
+      {
+        "author": "Heritage83",
+        "handle": "@heritage83",
+        "text": "The Kennedy legacy continues."
+      },
+      {
+        "author": "NYCInsider",
+        "handle": "@nyc_insider",
+        "text": "He’s entering a crowded Democratic field in a district that includes Manhattan’s Upper West Side, Upper East Side and Midtown."
+      }
+    ]
+  }
+]
