@@ -151,6 +151,23 @@ body { background: var(--bg); margin: 20px; }
 }
 
 #trendingList li:hover { text-decoration: underline; }
+
+/* AI SUMMARY (TIMELINE) */
+.ai-summary {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #fffdf8;
+  border: 1px solid #fbe5b3;
+  font-size: 14px;
+}
+
+.ai-summary .label {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
 </style>
 </head>
 
@@ -243,6 +260,14 @@ function createPost(data) {
       </div>
 
       <div class="text">${data.text}</div>
+
+${data.aiSummary ? `
+  <div class="ai-summary">
+    <div class="label">AI Summary</div>
+    <div>${data.aiSummary}</div>
+  </div>
+` : ""}
+
       ${data.image ? `<img src="${data.image}" class="thumb">` : ""}
 
       <div class="actions">
