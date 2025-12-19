@@ -20,6 +20,21 @@ body { background:var(--bg); margin:20px; }
 
 .container { max-width:800px; margin:auto; }
 
+.top-nav {
+  display:flex;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.home-btn {
+  text-decoration:none;
+  font-weight:600;
+  color:#1f6feb;
+  background:#eef2ff;
+  padding:8px 14px;
+  border-radius:20px;
+}
+
 .post {
   background:var(--card);
   border-radius:var(--radius);
@@ -96,8 +111,9 @@ body { background:var(--bg); margin:20px; }
   border:1px solid #dbeafe;
 }
 
+/* COMMENT BOX */
 .comment-box {
-  margin-top:14px;
+  margin-bottom:16px;
 }
 
 .comment-box textarea {
@@ -119,60 +135,20 @@ body { background:var(--bg); margin:20px; }
   font-weight:600;
   cursor:pointer;
 }
-
-#backBtn {
-  display:block;
-  margin:24px auto;
-  padding:10px 18px;
-  background:#e6ecf0;
-  border-radius:20px;
-  text-decoration:none;
-  color:#333;
-  font-weight:600;
-}
-
-/* TOP RETURN BAR */
-.top-bar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: var(--bg);
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-.top-back-btn {
-  display: inline-block;
-  padding: 8px 14px;
-  background: #e6ecf0;
-  border-radius: 20px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  font-size: 14px;
-}
-  
 </style>
 </head>
 
 <body>
-  
-<div class="top-bar">
-  <div class="container">
-    <a class="top-back-btn" href="../index.html">⬅ Back to Timeline</a>
-  </div>
-</div>
-
 
 <div class="container">
-  <div id="thread"></div>
 
-  <div class="comment-box">
-    <textarea id="userReply" placeholder="Write a reply..."></textarea>
-    <button id="postReply">Reply</button>
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <a class="home-btn" href="../index.html">⬅ Timeline</a>
   </div>
 
-  <a id="backBtn" href="../index.html">⬅ Back to Timeline</a>
+  <div id="thread"></div>
+
 </div>
 
 <script>
@@ -230,6 +206,7 @@ fetch("../data/posts.json")
 
     renderMainPost(post);
     renderAISummary(post);
+    renderCommentBox();      // ⬅ MOVED HERE
     post.replies.forEach(r => renderReply(r));
     renderUserComments();
   });
@@ -266,11 +243,7 @@ function renderMainPost(p) {
     el.querySelector(".like span").textContent = state.likes;
     save();
 
-    window.parent.postMessage({
-      type: "USER_LIKE",
-      postId,
-      count: state.likes
-    }, "*");
+    window.parent.postMessage({ type:"USER_LIKE", postId, count:state.likes }, "*");
   };
 
   el.querySelector(".retweet").onclick = () => {
@@ -279,11 +252,7 @@ function renderMainPost(p) {
     el.querySelector(".retweet span").textContent = state.retweets;
     save();
 
-    window.parent.postMessage({
-      type: "USER_RETWEET",
-      postId,
-      count: state.retweets
-    }, "*");
+    window.parent.postMessage({ type:"USER_RETWEET", postId, count:state.retweets }, "*");
   };
 }
 
@@ -301,6 +270,36 @@ function renderAISummary(p) {
   `;
 
   thread.appendChild(el);
+}
+
+// ---------- COMMENT BOX (MOVED) ----------
+function renderCommentBox() {
+  const box = document.createElement("div");
+  box.className = "comment-box";
+
+  box.innerHTML = `
+    <textarea id="userReply" placeholder="Write a reply..."></textarea>
+    <button id="postReply">Reply</button>
+  `;
+
+  thread.appendChild(box);
+
+  box.querySelector("#postReply").onclick = () => {
+    const ta = box.querySelector("#userReply");
+    const txt = ta.value.trim();
+    if (!txt) return;
+
+    state.comments.push(txt);
+    save();
+
+    window.parent.postMessage({
+      type:"USER_COMMENT",
+      postId,
+      text:txt
+    }, "*");
+
+    location.reload();
+  };
 }
 
 // ---------- Replies ----------
@@ -339,26 +338,7 @@ function renderUserComments() {
   });
 }
 
-// ---------- Submit Reply ----------
-document.getElementById("postReply").onclick = () => {
-  const ta = document.getElementById("userReply");
-  const txt = ta.value.trim();
-  if (!txt) return;
-
-  state.comments.push(txt);
-  save();
-
-  window.parent.postMessage({
-    type: "USER_COMMENT",
-    postId,
-    text: txt
-  }, "*");
-
-  ta.value = "";
-  location.reload();
-};
-
-// ---------- Scroll Depth (Conversation) ----------
+// ---------- Scroll Depth ----------
 window.addEventListener("scroll", () => {
   const depth = Math.round(
     (window.scrollY + window.innerHeight) /
@@ -366,7 +346,7 @@ window.addEventListener("scroll", () => {
   );
 
   window.parent.postMessage({
-    type: "SCROLL_DEPTH_CONVO",
+    type:"SCROLL_DEPTH_CONVO",
     postId,
     depth
   }, "*");
@@ -375,9 +355,9 @@ window.addEventListener("scroll", () => {
 // ---------- Time on Conversation ----------
 window.addEventListener("beforeunload", () => {
   window.parent.postMessage({
-    type: "TIME_ON_CONVO",
+    type:"TIME_ON_CONVO",
     postId,
-    ms: Date.now() - convoStart
+    ms:Date.now() - convoStart
   }, "*");
 });
 </script>
