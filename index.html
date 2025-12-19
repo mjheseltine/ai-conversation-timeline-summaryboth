@@ -259,7 +259,9 @@ function createPost(data) {
         ${data.handle} · ${data.timestamp}
       </div>
 
-      <div class="text">${data.text}</div>
+     <div class="text">${data.text}</div>
+
+${data.image ? `<img src="${data.image}" class="thumb">` : ""}
 
 ${data.aiSummary ? `
   <div class="ai-summary">
@@ -268,7 +270,6 @@ ${data.aiSummary ? `
   </div>
 ` : ""}
 
-      ${data.image ? `<img src="${data.image}" class="thumb">` : ""}
 
       <div class="actions">
         <button class="like ${state.liked ? "liked":""}">❤️ <span>${state.likes}</span></button>
